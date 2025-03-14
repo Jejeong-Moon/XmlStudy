@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<memberList>
+	<!-- 루트 엘리먼트는 하나 -->
+	<!-- 루트 엘리먼트의 이름은 『---.xml』 파일 이름과 동일한 이름 사용 -->
+	<!-- 스스로(본인)의 정보를 표현할 수 있는 문서 작성 -->
+	<!-- + 우리 팀원들 -->
+	<member sid="1">
+		<name>문제정</name>
+		<age>30</age>
+		<ssn>123456-1234567</ssn>
+		<tel>010-1111-1111</tel>
+	</member>
+	<member sid="2">
+		<name>정영훈</name>
+		<age>29</age>
+		<ssn>123456-1234567</ssn>
+		<tel>010-2222-2222</tel>
+	</member>
+	<member sid="3">
+		<name>김민승</name>
+		<age>28</age>
+		<ssn>123456-1234567</ssn>
+		<tel>010-3333-3333</tel>
+	</member>
+	<member sid="4">
+		<name>박세진</name>
+		<age>28</age>
+		<ssn>123456-1234567</ssn>
+		<tel>010-4444-4444</tel>
+	</member>
+	<member sid="5">
+		<name>안석창</name>
+		<age>27</age>
+		<ssn>123456-1234567</ssn>
+		<tel>010-5555-5555</tel>
+	</member>
+	
+</memberList>

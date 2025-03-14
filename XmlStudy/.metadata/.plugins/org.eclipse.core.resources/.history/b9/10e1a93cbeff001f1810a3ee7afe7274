@@ -1,0 +1,78 @@
+package com.test;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+public class XmlDomTest04
+{
+	public static void main(String[] args)
+	{
+		
+		try
+		{
+			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+			Document xmlObj = null;
+			xmlObj = builder.parse("VEHICLES.xml");
+			
+			Element root = xmlObj.getDocumentElement();
+			
+			NodeList vehicelNodeList = root.getElementsByTagName("VEHICLE");
+			
+			/*
+			NodeList makeNodeList = vehicleElement.getElementsByTagName("MAKE");
+			Node makeNode = makeNodeList.item(0);
+			Element makeElement = (Element)makeNode;
+			System.out.println(makeElement.getTextContent());
+			*/
+			System.out.println("--------------------------------------------------------------");
+			System.out.println("NO      MAKE      MODEL        YEAR          STYLE       PRICE");
+			for (int i = 0; i < vehicelNodeList.getLength(); i++)
+			{
+				Node vehicleNode = vehicelNodeList.item(i);
+				Element vehicleElement = (Element)vehicleNode;
+				System.out.println("--------------------------------------------------------------");
+				System.out.printf("%2s %10s %10s %10s %15s %10s%n",i+1,getText(vehicleElement, "MAKE"),getText(vehicleElement, "MODEL")
+											,getText(vehicleElement, "YEAR"),getText(vehicleElement, "STYLE"),getText(vehicleElement, "PRICE"));
+				System.out.println("Options ------------------------------------------------------");
+				
+				NodeList optionNodeList = vehicleElement.getElementsByTagName("OPTIONS");
+				Node optionNode = optionNodeList.item(0);
+				Element optionElement = (Element)optionNode;	// 옵션즈 노드까지 찾았고 그걸 엘리먼트로 만듬
+				
+				NodeList optionsNodeList = optionElement.getChildNodes();
+				for (int j = 0; j < optionNodeList.getLength(); j++)
+				{
+					Node optionsNode = optionsNodeList.item(j);
+					if (optionNode.getNodeType()==1)
+					{
+						Element optionsElement = (Element)optionsNode;
+						System.out.printf("%s : %s %n",optionsElement.getNodeName(),optionsElement.getTextContent());
+					}
+					
+				}
+			}
+			
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		
+	}
+	
+	private static String getText(Element parent, String tagname)
+	{
+		String result="";
+		
+		Node node = parent.getElementsByTagName(tagname).item(0);
+		Element element = (Element)node;
+		result= element.getChildNodes().item(0).getNodeValue();
+		return result;
+	}
+	
+	
+}

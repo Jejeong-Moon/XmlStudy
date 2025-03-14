@@ -1,0 +1,54 @@
+/*=============================
+ * 	XmlDomTest02.java
+ * 	- 콘솔 기반 자바 프로그램
+ * 	- XML DOM 활용 → 로컬(local) XML 읽어내기
+ * 	  (breakfast_menu.xml)
+ ============================*/
+
+package com.test;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+public class XmlDomTest03
+{
+	public static void main(String[] args)
+	{
+		try
+		{
+			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+			Document xmlObj = null;
+			xmlObj = builder.parse("breakfast_menu.xml");
+			
+			Element root = xmlObj.getDocumentElement();
+			
+			NodeList menuNodeList = root.getElementsByTagName("food");
+			//System.out.println(menuNodeList.getLength());
+			
+			Node menuNode = menuNodeList.item(0);
+			Element menuElement = (Element)menuNode;
+			
+			NodeList nameNodeList = menuElement.getElementsByTagName("name");
+			Node nameNode = nameNodeList.item(0);
+			Element nameElement = (Element)nameNode;
+			
+			System.out.println(nameElement.getTextContent());
+			
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		
+		
+		
+		
+		
+	}
+	
+	
+}

@@ -1,0 +1,80 @@
+/*=============================
+ * 	XmlDomTest05.java
+ * 	- 콘솔 기반 자바 프로그램
+ * 	- XML DOM 활용 → 로컬(local) XML 읽어내기
+ * 	  (rss.xml)
+ ============================*/
+
+package com.test;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+import com.sun.javafx.image.impl.ByteIndexed.Getter;
+
+public class XmlDomTest05
+{
+	public static void main(String[] args)
+	{
+		
+		try
+		{
+			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+			Document xmlObj = builder.parse("rss.xml"); 
+			
+			// 2. 루트 엘리먼트 접근
+			
+			Element root = xmlObj.getDocumentElement();
+			
+			// 3-1. 타이틀 추출하기
+			Node itemNode = root.getElementsByTagName("item").item(0);
+			Element itemElement = (Element)itemNode;
+			
+			System.out.printf("%s%n%n", XMLDOM.getText(itemElement, "title") );
+			
+			// 3-2. 예보요약 추출하기
+			Node summaryNode = root.getElementsByTagName("summary").item(0);
+			Element summaryElement = (Element)summaryNode;
+			
+			System.out.println("[예보요약]---------------------------------------------------------");
+			System.out.printf("%s%n%n",summaryElement.getTextContent().replaceAll("<br>", "\n"));
+			
+			// 3-3. 지역별 예보 추출하기
+			System.out.println("[지역별 날씨]---------------------------------------------------------");
+			NodeList local_taNodeList = root.getElementsByTagName("local_ta");
+			
+			//System.out.println(local_taNodeList.getLength());
+			//--==>> 13
+			
+			Node local_taNode = local_taNodeList.item(0);
+			Element local_taElement = (Element)local_taNode;
+			
+			System.out.println(local_taElement.getNodeValue());
+			
+			/*
+			for (int i = 0; i < local_taNodeList.getLength(); i++)
+			{
+				Node local_taNode = local_taNodeList.item(i);
+				Element local_taElement = (Element)local_taNode;
+				
+				//System.out.println(local_taElement.getChildNodes().item(i).getNodeName());
+				
+				//System.out.printf("지역 : %s%n%n",XMLDOM.getText(local_taElement, "local_ta_name"));
+				
+				
+			}
+			*/
+			
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		
+	}
+	
+}

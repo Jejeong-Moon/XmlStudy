@@ -1,0 +1,66 @@
+/*========================================
+ *			XMLDOM.java 
+ =======================================*/
+
+
+package com.test;
+
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+public class XMLDOM
+{
+
+	public static String getText(Element parent, String tagName)
+	{
+		// 반환할 값
+		String result= "";
+		
+		// 대사 태그 객체의 첫 번재 자식 노드 얻어오기
+		Node node = parent.getElementsByTagName(tagName).item(0);
+		Element element = (Element)node;
+		
+		// 대상 엘리먼트의 자식노드의 값 얻어오기
+		result = element.getChildNodes().item(0).getNodeValue();
+		
+		
+		return result;
+	}
+	
+	public static String getText2(Element parent, String tagName)
+	{
+		// 반환할 값
+		String result= "";
+		
+		// 대사 태그 객체의 첫 번재 자식 노드 얻어오기
+		Node node = parent.getElementsByTagName(tagName).item(0);
+		Element element = (Element)node;
+		
+		// 대상 엘리먼트의 자식노드의 값 얻어오기
+		result = element.getTextContent();
+		
+		
+		return result;
+	}
+	
+	public static void printAllElementsRecursive(Node node, String indent) 
+	{
+	    // 요소 노드인 경우만 처리
+	    if (node.getNodeType() == Node.ELEMENT_NODE) {
+	        Element element = (Element) node;
+	        String tagName = element.getTagName();
+	        String value = element.getTextContent().trim();
+
+	        // 태그와 값을 출력 (들여쓰기 추가)
+	        System.out.printf("%s%s : %s%n", indent, tagName, value);
+
+	        // 자식 노드를 순회하여 재귀 호출
+	        NodeList children = element.getChildNodes();
+	        for (int i = 0; i < children.getLength(); i++) {
+	            printAllElementsRecursive(children.item(i), indent + "    "); // 들여쓰기 추가
+	        }
+	    }
+	}
+	
+}

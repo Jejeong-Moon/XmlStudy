@@ -1,0 +1,10 @@
+
+<!ELEMENT memberList (member+)>
+<!ELEMENT member (name,age,ssn,tel,curriculum?)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT tel (#PCDATA)>
+<!ELEMENT ssn (#PCDATA)>
+<!ELEMENT age (#PCDATA)>
+<!ELEMENT sub (#PCDATA)>
+<!ELEMENT curriculum (sub+)>
+<!ATTLIST member sid CDATA #IMPLIED>
