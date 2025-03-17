@@ -1,0 +1,14 @@
+/*================================
+ * 	XmlDomTest07.java
+ * 	- 콘솔 기반 자바 프로그램
+ * 	- MXL DOM 활용 → 원격(remote) XML 읽어내기
+ * 		- https://www.kma.go.kr/weather/forecast/mid-term-rss3.jsp?stnId=184
+ * 		→ 기상청 날씨누리 육상 중기 예보
+ ===============================*/
+
+package com.test;
+
+public class XmlDomTest07
+{
+
+}

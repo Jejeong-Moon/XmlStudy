@@ -5,6 +5,8 @@
 <fullyQualifiedTypeName name="javax.xml.parsers.DocumentBuilderFactory"/>
 <fullyQualifiedTypeName name="org.w3c.dom.Document"/>
 <fullyQualifiedTypeName name="org.w3c.dom.Node"/>
+<fullyQualifiedTypeName name="com.sun.javafx.image.impl.ByteIndexed.Getter"/>
 <fullyQualifiedTypeName name="org.w3c.dom.NodeList"/>
 <fullyQualifiedTypeName name="org.w3c.dom.Element"/>
+<fullyQualifiedTypeName name="com.test.XMLDOM"/>
 </qualifiedTypeNameHistroy>

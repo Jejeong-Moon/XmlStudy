@@ -1,0 +1,85 @@
+/*==================================
+ * 	XmlDomTest06.java
+ * 	- 콘솔 기반 자바 프로그램
+ * 	- XML DOM 활용 → 다운로드 받은 로컬(local) XML 읽어내기
+ * 		- (rss.xml) → 기상청 날씨누리 육상 중기 예보
+ =================================*/
+
+package com.test;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+public class XmlDomTest06
+{
+	public static void main(String[] args)
+	{
+		try
+		{
+			
+			// 1. XML 파일 메모리에 로드하기
+			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+			Document xmlObj = null;
+			xmlObj = builder.parse("rss.xml");
+			
+			// 2. 루트 엘리먼트 접근하기
+			Element root = xmlObj.getDocumentElement();
+			
+			// 3. 아이템 하위의 타이틀 추출하기
+			Node itemNode = root.getElementsByTagName("item").item(0);
+			Element itemElement = (Element)itemNode;
+			
+			System.out.printf("%s%n%n",XMLDOM.getText(itemElement, "title"));
+			
+			
+			// 4. 기상전망(wf) 추출하기
+			Node wfNode = root.getElementsByTagName("wf").item(0);
+			Element wfElement = (Element)wfNode;
+			
+			System.out.println("[기상전망]-----------------------------------------------------------");
+			System.out.printf("%s%n%n",wfElement.getTextContent().replaceAll("<br />", "\n"));
+			//XMLDOM.getContext(root, "wf");
+			
+			// 5. 도시별 기상예보 추출하기
+			System.out.println("[육상날씨]-----------------------------------------------------------");
+			NodeList locationNodeList = root.getElementsByTagName("location");
+			//XMLDOM.getContext(root, "location");
+			NodeList dataNodeList = root.getElementsByTagName("data");
+			for (int i = 0; i < locationNodeList.getLength(); i++)
+			{
+				Node locationNode = locationNodeList.item(i);
+				Element locationElement = (Element)locationNode;
+				
+				System.out.printf("도시 : %s%n",XMLDOM.getText(locationElement, "city"));
+				
+				for (int j = 0; j < dataNodeList.getLength(); j++)
+				{
+					Node dataNode = dataNodeList.item(j);
+					Element dataElement = (Element)dataNode;
+					//System.out.printf("\t%s%n",XMLDOM.getText(dataElement, "tmEf"));
+					System.out.println(j);
+					System.out.printf("\t%s%n",XMLDOM.getText(dataElement, "wf"));
+					
+				}
+				
+				System.out.println("-----------------------------------------------------------------");
+				
+			}
+			
+			
+			
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		
+		
+	}
+	
+	
+}

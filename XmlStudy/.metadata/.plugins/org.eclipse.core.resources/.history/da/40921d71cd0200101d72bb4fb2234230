@@ -1,0 +1,75 @@
+/*================================
+ * 	XmlDomTest07.java
+ * 	- 콘솔 기반 자바 프로그램
+ * 	- MXL DOM 활용 → 원격(remote) XML 읽어내기
+ * 		- https://www.kma.go.kr/weather/forecast/mid-term-rss3.jsp?stnId=184
+ * 		→ 기상청 날씨누리 육상 중기 예보
+ ===============================*/
+
+/*
+ *  stnId=108 전국
+ *  stnId=109 서울,경기
+ *  stnId=105 강원
+ *  stnId=131 충북
+ *  stnId=133 충남
+ *  stnId=146 전북
+ *  stnId=156 전남
+ *  stnId=143 경북
+ *  stnId=159 경남
+ *  stnId=184 제주특별자치도
+ */
+
+package com.test;
+
+import java.util.Scanner;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Document;
+
+public class XmlDomTest07
+{
+	public static void main(String[] args)
+	{
+		Scanner sc = new Scanner(System.in);
+		String[] stnId = {"108","109","105","131","133","134","146","156","143","159","184"};	
+		
+		do
+		{
+			try
+			{
+				DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+				Document xmlObj = null;
+				
+				// 원격(remote) XML 파일인 경우
+				// stnId 를 외우 입력된 값으로 처리...
+				System.out.println("■■■ 기상청 육상 중기 예보 ■■■");
+				System.out.println("-----------------------------------");
+				System.out.println("1. 전국     ");
+				System.out.println("2. 서울,경기  ");
+				System.out.println("3. 강원     ");
+				System.out.println("4. 충북     ");
+				System.out.println("5. 충남     ");
+				System.out.println("6. 전북     ");
+				System.out.println("7. 전남     ");
+				System.out.println("8. 경북     ");
+				System.out.println("9. 경남    ");
+				System.out.println("10. 제주특별자치도");
+				System.out.println("-----------------------------------");
+				System.out.print(">> 지역 선택(종료 0) : ");
+				
+				
+				
+			} catch (Exception e)
+			{
+				System.out.println(e.toString());
+			}
+			
+		} while (true);
+		
+	}
+	
+	
+	
+}

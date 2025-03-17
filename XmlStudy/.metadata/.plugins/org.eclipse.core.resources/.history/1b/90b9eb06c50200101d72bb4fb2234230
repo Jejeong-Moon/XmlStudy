@@ -1,0 +1,26 @@
+/*==================================
+ * 	XmlDomTest06.java
+ * 	- 콘솔 기반 자바 프로그램
+ * 	- XML DOM 활용 → 다운로드 받은 로컬(local) XML 읽어내기
+ * 		- (rss.xml) → 기상청 날씨누리 육상 중기 예보
+ =================================*/
+
+package com.test;
+
+public class XmlDomTest06
+{
+	public static void main(String[] args)
+	{
+		try
+		{
+			
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		
+		
+	}
+	
+	
+}
