@@ -1,0 +1,71 @@
+/*==================================
+ * 	XmlDomTest08.java
+ * 	- 콘솔 기반 자바 프로그램
+ * 	- XMLDOM 활용 → 원격(remote) XML 읽어내기
+ *	→ https://news-ex.jtbc.co.kr/v1/get/rss/issue 
+ =================================*/
+
+/*
+ <title>JTBC News</title>
+<link>http://news-ex.jtbc.co.kr/v1/get/rss/issue</link>
+<description>
+<![CDATA[ 이슈 TOP 10 RSS ]]>
+</description>
+<language>ko</language>
+<copyright>Copyright(C) JTBC All rights reserved.</copyright>
+ 
+ <item>
+<title>
+<![CDATA[ 트럼프 "바이든 선제 사면 무효"…이유는 자동서명기계? [소셜픽] ]]>
+</title>
+<link>https://news.jtbc.co.kr/article/NB12239148</link>
+<description>
+<![CDATA[ 트럼프 대통령이 전임자가 한 사면이 무효라고 주장했습니다. &#39;자동 서명 기계&#39;가 서명했기 때문이라는 겁니다. [도널드 트럼프/미국 대통령 : 사면하기 위해 자동 서명 기계를 썼습니다. 선출되지 않은 ]]>
+</description>
+<pubDate>2025.03.18</pubDate>
+</item>
+ 
+ 
+ */
+
+package com.test;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+public class XmlDomTest08
+{
+	public static void main(String[] args)
+	{
+		try
+		{
+			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+			Document xmlObj = null;
+			
+			xmlObj = builder.parse("https://news-ex.jtbc.co.kr/v1/get/rss/issue");
+			
+			Element root = xmlObj.getDocumentElement();
+			
+			NodeList channelNodeList = root.getElementsByTagName("channel");
+			Node channelNode = channelNodeList.item(0);
+			Element channelElement = (Element)channelNode;
+			
+			System.out.println(channelElement.getTextContent());
+			
+			
+			
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		
+		
+	}
+	
+	
+}

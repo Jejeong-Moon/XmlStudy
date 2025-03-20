@@ -1,0 +1,21 @@
+package com.test;
+
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+
+public class XMLDOM
+{
+	public static String getText(Element parent, String tagname)
+	{
+		String result = "";
+		
+		Node node = parent.getElementsByTagName(tagname).item(0);
+		Element el = (Element)node;
+		
+		result = el.getChildNodes().item(0).getNodeValue();
+		
+		return result;
+	}
+	
+	
+}

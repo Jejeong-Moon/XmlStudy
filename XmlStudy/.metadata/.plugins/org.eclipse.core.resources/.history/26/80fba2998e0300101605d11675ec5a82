@@ -1,0 +1,52 @@
+/*==================================
+ * 	XmlDomTest08.java
+ * 	- 콘솔 기반 자바 프로그램
+ * 	- XMLDOM 활용 → 원격(remote) XML 읽어내기
+ *	→ https://news-ex.jtbc.co.kr/v1/get/rss/issue 
+ =================================*/
+
+/*
+ <title>JTBC News</title>
+<link>http://news-ex.jtbc.co.kr/v1/get/rss/issue</link>
+<description>
+<![CDATA[ 이슈 TOP 10 RSS ]]>
+</description>
+<language>ko</language>
+<copyright>Copyright(C) JTBC All rights reserved.</copyright>
+ 
+ */
+
+package com.test;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
+public class XmlDomTest08
+{
+	public static void main(String[] args)
+	{
+		try
+		{
+			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+			Document xmlObj = null;
+			
+			xmlObj = builder.parse("https://news-ex.jtbc.co.kr/v1/get/rss/issue");
+			
+			Element root = xmlObj.getDocumentElement();
+			
+			NodeList 
+			
+			
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		
+		
+	}
+	
+	
+}

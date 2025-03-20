@@ -1,0 +1,63 @@
+package com.test;
+
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+public class XMLDOM
+{
+	public static String getText(Element parent, String tagname)
+	{
+		String result = "";
+		
+		Node node = parent.getElementsByTagName(tagname).item(0);
+		Element el = (Element)node;
+		
+		result = el.getChildNodes().item(0).getNodeValue();
+		
+		return result;
+	}
+	
+	
+	public static void getText2(Element parent)
+	{
+		
+		NodeList nodeList = parent.getChildNodes();
+		
+		for (int i = 0; i < nodeList.getLength(); i++)
+		{
+			Node node = nodeList.item(i);
+			Element element = (Element)node;
+			String tagName = element.getTagName();
+			
+			NodeList childNodeList = element.getChildNodes();
+			Boolean check = false;
+			
+			for (int j = 0; j < childNodeList.getLength(); j++)
+			{
+				if (childNodeList.item(j).getNodeType() == Node.ELEMENT_NODE)
+				{
+					check = true;
+					break;
+				}
+			}
+			
+			if (check)
+			{
+				System.out.printf("%s%s %n","   ",tagName);
+				getText2(element);
+				
+			}
+			else 
+            {
+                String value = element.getTextContent().trim();
+                System.out.printf("%s : %s%n", tagName, value);
+            }
+			
+			
+		}
+		
+	}
+	
+	
+}

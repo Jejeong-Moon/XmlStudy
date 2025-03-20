@@ -1,0 +1,13 @@
+/*============================
+ 	WeatherDTO.java
+ ===========================*/
+
+package com.test;
+
+public class WeatherDTO
+{
+	// 주요 속성 구성
+	private String tmE, wf, tmn,tmx,rnSt,img;
+	
+	
+}

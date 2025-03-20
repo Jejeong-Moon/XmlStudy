@@ -7,16 +7,16 @@
  ===============================*/
 
 /*
- *  stnId=108 전국
- *  stnId=109 서울,경기
- *  stnId=105 강원
- *  stnId=131 충북
- *  stnId=133 충남
- *  stnId=146 전북
- *  stnId=156 전남
- *  stnId=143 경북
- *  stnId=159 경남
- *  stnId=184 제주특별자치도
+stnId=108 전국
+stnId=109 서울,경기
+stnId=105 강원
+stnId=131 충북
+stnId=133 충남
+stnId=146 전북
+stnId=156 전남
+stnId=143 경북
+stnId=159 경남
+stnId=184 제주특별자치도
  */
 
 package com.test;
@@ -82,7 +82,7 @@ public class XmlDomTest07
 				URL url = new URL(str);
 				
 				// check ~!!
-				// 구성된 URL 로 접근하여 데이터 내용 읽어고기 → 스트림(stream)
+				// 구성된 URL 로 접근하여 데이터 내용 읽어오기 → 스트림(stream)
 				InputSource is = new InputSource(url.openStream());
 				xmlObj = builder.parse(is);
 				
@@ -127,7 +127,6 @@ public class XmlDomTest07
 				}
 				
 				
-				
 			} catch (Exception e)
 			{
 				System.out.println(e.toString());
@@ -136,6 +135,9 @@ public class XmlDomTest07
 		} while (true);
 		
 	}
+	
+	
+	
 	
 	
 	
